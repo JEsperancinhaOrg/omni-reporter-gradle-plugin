@@ -2,7 +2,7 @@ plugins {
     kotlin("jvm") version "1.6.10"
     `java-gradle-plugin`
     `maven-publish`
-//    id("org.jesperancinha.plugins.omni") version "0.0.0"
+    id( "org.jesperancinha.plugins.omni") version "0.0.0"
 }
 
 kotlin {
@@ -48,4 +48,5 @@ group = "org.jesperancinha.plugins.omni"
 
 dependencies {
     implementation("org.jesperancinha.plugins:omni-coveragereporter-commons:0.0.0")
+    implementation("ch.qos.logback:logback-classic:1.3.0-alpha12")
 }
