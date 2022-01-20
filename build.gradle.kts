@@ -3,6 +3,7 @@ plugins {
     `java-gradle-plugin`
     `maven-publish`
     id( "org.jesperancinha.plugins.omni") version "0.0.0"
+    jacoco
 }
 
 kotlin {
@@ -46,7 +47,22 @@ publishing {
 
 group = "org.jesperancinha.plugins.omni"
 
+tasks.test {
+    finalizedBy(tasks.jacocoTestReport)
+}
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
+    reports {
+        xml.required.set(true)
+        csv.required.set(true)
+    }
+}
 dependencies {
     implementation("org.jesperancinha.plugins:omni-coveragereporter-commons:0.0.0")
     implementation("ch.qos.logback:logback-classic:1.3.0-alpha12")
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.8.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.8.2")
+    testImplementation("org.junit.platform:junit-platform-suite:1.8.2")
 }

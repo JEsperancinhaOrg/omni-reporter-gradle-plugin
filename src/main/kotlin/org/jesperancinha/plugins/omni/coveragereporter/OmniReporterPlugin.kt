@@ -13,7 +13,7 @@ import org.jesperancinha.plugins.omni.reporter.processors.CoverallsReportsProces
 import org.slf4j.LoggerFactory
 import java.io.File
 
-private class GradleOmniBuild(
+class GradleOmniBuild(
     override val testOutputDirectory: String,
     override val directory: String
 ) : OmniBuild
