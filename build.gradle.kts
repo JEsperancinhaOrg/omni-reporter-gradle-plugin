@@ -2,7 +2,7 @@ plugins {
     kotlin("jvm") version "1.6.10"
     `java-gradle-plugin`
     `maven-publish`
-//    id("org.jesperancinha.plugins.omni") version "1.0-SNAPSHOT"
+//    id("org.jesperancinha.plugins.omni") version "0.0.0"
 }
 
 kotlin {
@@ -12,8 +12,8 @@ kotlin {
 }
 
 repositories {
-    mavenCentral()
     mavenLocal()
+    mavenCentral()
 }
 
 buildscript {
@@ -37,7 +37,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "org.jesperancinha.plugins.omni"
             artifactId = "org.jesperancinha.plugins.omni.gradle.plugin"
-            version = "1.0-SNAPSHOT"
+            version = "0.0.0"
 
             from(components["java"])
         }
@@ -45,3 +45,7 @@ publishing {
 }
 
 group = "org.jesperancinha.plugins.omni"
+
+dependencies {
+    implementation("org.jesperancinha.plugins:omni-coveragereporter-commons:0.0.0")
+}
