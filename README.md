@@ -10,6 +10,7 @@
 
 ## References
 
+- [How to publish artifact to Maven Central via Gradle](https://www.albertgao.xyz/2018/01/18/how-to-publish-artifact-to-maven-central-via-gradle/)
 - [Deploying to OSSRH with Gradle - Introduction](https://central.sonatype.org/publish/publish-gradle/)
 - [Writing a simple plugin](https://docs.gradle.org/current/userguide/custom_plugins.html)
 

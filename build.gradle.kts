@@ -2,8 +2,9 @@ plugins {
     kotlin("jvm") version "1.6.10"
     `java-gradle-plugin`
     `maven-publish`
-    id( "org.jesperancinha.plugins.omni") version "0.0.0"
+    id("org.jesperancinha.plugins.omni") version "0.0.0"
     jacoco
+    signing
 }
 
 kotlin {
@@ -32,19 +33,6 @@ gradlePlugin {
     }
 }
 
-
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = "org.jesperancinha.plugins.omni"
-            artifactId = "org.jesperancinha.plugins.omni.gradle.plugin"
-            version = "0.0.0"
-
-            from(components["java"])
-        }
-    }
-}
-
 group = "org.jesperancinha.plugins.omni"
 
 val test by tasks.getting(Test::class) {
@@ -59,6 +47,82 @@ tasks.jacocoTestReport {
     reports {
         xml.required.set(true)
         csv.required.set(true)
+    }
+}
+
+val sourcesJar by tasks.registering(Jar::class) {
+    archiveClassifier.set("sources")
+    from(sourceSets.main.get().allSource)
+}
+
+val javadocJar by tasks.registering(Jar::class) {
+    archiveClassifier.set("javadoc")
+    from(tasks.javadoc)
+}
+
+tasks.withType<Sign>().configureEach {
+    onlyIf {
+        gradle.taskGraph.hasTask(":publishToSonatype")
+    }
+}
+
+signing {
+    val signingKey = providers
+        .environmentVariable("GPG_SIGNING_KEY")
+        .forUseAtConfigurationTime()
+    val signingPassphrase = providers
+        .environmentVariable("GPG_SIGNING_PASSPHRASE")
+        .forUseAtConfigurationTime()
+    if (signingKey.isPresent && signingPassphrase.isPresent) {
+        useInMemoryPgpKeys(signingKey.get(), signingPassphrase.get())
+        val extension = extensions
+            .getByName("publishing") as PublishingExtension
+        sign(extension.publications)
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "org.jesperancinha.plugins.omni"
+            artifactId = "org.jesperancinha.plugins.omni.gradle.plugin"
+            version = "0.0.0"
+
+            from(components["java"])
+        }
+        create<MavenPublication>("mavenJava") {
+            artifact(sourcesJar.get())
+            artifact(javadocJar.get())
+            pom {
+                name.set("Omni Coverage Reporter Gradle Plugin")
+                description.set("A plugin to report coverage to differet API's")
+                url.set("https://joaofilipesabinoesperancinha.nl/")
+
+                licenses {
+                    license {
+                        name.set("Apache 2.0")
+                        url.set("https://opensource.org/licenses/Apache-2.0")
+                        distribution.set("repo")
+                    }
+                }
+
+                developers {
+                    developer {
+                        name.set("João Esperancinha")
+                        email.set("jofisaes@gmail.com")
+                        organization.set("jessperancinha.org")
+                        organizationUrl.set("https://joaofilipesabinoesperancinha.nl/")
+                    }
+                }
+
+                scm {
+                    connection.set("scm:git:git://github.com/JEsperancinhaOrg.git")
+                    developerConnection.set("scm:git:git://github.com/JEsperancinhaOrg.git")
+                    url.set("https://github.com/JEsperancinhaOrg/omni-reporter-commons")
+                    tag.set("0.0.0")
+                }
+            }
+        }
     }
 }
 
