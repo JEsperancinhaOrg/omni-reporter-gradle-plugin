@@ -210,7 +210,7 @@ class OmniReporterPlugin : Plugin<Project> {
         }
 
         if ((isCodacyAPIConfigured || effectiveCodacyToken != null) && !disableCodacy) {
-            val codacyApiTokenConfig = effectiveCodacyToken?.let {
+            val codacyApiTokenConfig = effectiveCodacyApiToken?.let {
                 CodacyApiTokenConfig(
                     codacyApiToken = effectiveCodacyApiToken ?: throw IncompleteCodacyApiTokenConfigurationException(),
                     codacyOrganizationProvider = effectiveCodacyOrganizationProvider
