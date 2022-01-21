@@ -34,4 +34,8 @@ jobs:
       run: sed 's+//++g' build.gradle.kts  > plugin.build.gradle.kts
       
     - name: Test New Build Coverage Run
-      run: ./gradlew -c plugin.settings.gradle.kts build -i      	
+      run: ./gradlew -c plugin.settings.gradle.kts build
+      env:
+         COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+         CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
