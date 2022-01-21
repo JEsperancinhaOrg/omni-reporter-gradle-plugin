@@ -6,6 +6,7 @@ import org.jesperancinha.plugins.omni.reporter.IncompleteCodacyApiTokenConfigura
 import org.jesperancinha.plugins.omni.reporter.OmniBuild
 import org.jesperancinha.plugins.omni.reporter.OmniProject
 import org.jesperancinha.plugins.omni.reporter.domain.CodacyApiTokenConfig
+import org.jesperancinha.plugins.omni.reporter.parsers.Language
 import org.jesperancinha.plugins.omni.reporter.pipelines.PipelineImpl
 import org.jesperancinha.plugins.omni.reporter.processors.CodacyProcessor
 import org.jesperancinha.plugins.omni.reporter.processors.CodecovProcessor
@@ -23,11 +24,14 @@ private class GradleOmniProject(
     override val build: OmniBuild?
 ) : OmniProject
 
+private fun Array<Language>.toSourceDirectories(absolutePath: String) =
+    map { File(absolutePath, "src/main/${it.name.toLowerCase()}").absolutePath }
+
 private val List<Project>.toOmniProjects: List<OmniProject?>
     get() = map {
         GradleOmniProject(
-            listOf(it.path),
-            GradleOmniBuild(it.buildDir.absolutePath, it.buildDir.absolutePath)
+            Language.values().toSourceDirectories(it.rootDir.absolutePath),
+            GradleOmniBuild(File(it.buildDir, "test-classes").absolutePath, it.buildDir.absolutePath)
         )
     }
 
@@ -87,7 +91,7 @@ class OmniReporterPlugin : Plugin<Project> {
                     extension.codacyUrl,
                     extension.codecovUrl,
                     extension.sourceEncoding,
-                    extension.projectBaseDir,
+                    extension.projectBaseDir ?: project.projectDir,
                     extension.failOnNoEncoding,
                     extension.failOnUnknown,
                     extension.failOnReportNotFound,
@@ -164,10 +168,10 @@ class OmniReporterPlugin : Plugin<Project> {
         logger.info("Coveralls URL: $coverallsUrl")
         logger.info("Codacy URL: $codacyUrl")
         logger.info("Codecov URL: $codecovUrl")
-        logger.info("Coveralls token: ${checkToken(coverallsToken)}")
-        logger.info("Codecov token: ${checkToken(codecovToken)}")
-        logger.info("Codacy token: ${checkToken(codacyToken)}")
-        logger.info("Codacy API token: ${checkToken(codacyApiToken)}")
+        logger.info("Coveralls token: ${checkToken(effectiveCoverallsToken)}")
+        logger.info("Codecov token: ${checkToken(effectiveCodecovToken)}")
+        logger.info("Codacy token: ${checkToken(effectiveCodacyToken)}")
+        logger.info("Codacy API token: ${checkToken(effectiveCodacyApiToken)}")
         logger.info("Codacy API fully configured: $isCodacyAPIConfigured")
         logger.info("Source Encoding: $sourceEncoding")
         logger.info("Parent Directory: $projectBaseDir")
@@ -187,7 +191,7 @@ class OmniReporterPlugin : Plugin<Project> {
         val currentPipeline = PipelineImpl.currentPipeline
 
         effectiveCoverallsToken?.let { token ->
-            if (!disableCoveralls)
+            if (!disableCoveralls) {
                 CoverallsReportsProcessor(
                     coverallsToken = token,
                     coverallsUrl = coverallsUrl,
@@ -202,6 +206,7 @@ class OmniReporterPlugin : Plugin<Project> {
                     ignoreTestBuildDirectory = ignoreTestBuildDirectory,
                     useCoverallsCount = useCoverallsCount
                 ).processReports()
+            }
         }
 
         if ((isCodacyAPIConfigured || effectiveCodacyToken != null) && !disableCodacy) {
