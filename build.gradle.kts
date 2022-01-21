@@ -119,10 +119,11 @@ configure<SigningExtension> {
     sign(publishing.publications.findByName("maven"))
 }
 
-
 apply<MavenPublishPlugin>()
 
-apply<SigningPlugin>()
+if (project.properties["ossrhUsername"] != null) {
+    apply<SigningPlugin>()
+}
 
 
 dependencies {
