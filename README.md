@@ -10,7 +10,8 @@
 
 ## References
 
--   [Writing a simple plugin](https://docs.gradle.org/current/userguide/custom_plugins.html)
+- [Deploying to OSSRH with Gradle - Introduction](https://central.sonatype.org/publish/publish-gradle/)
+- [Writing a simple plugin](https://docs.gradle.org/current/userguide/custom_plugins.html)
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 
