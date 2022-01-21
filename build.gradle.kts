@@ -100,14 +100,17 @@ configure<PublishingExtension> {
             }
         }
         repositories {
-            maven {
-                name = "OSSRH"
-                setUrl("https://oss.sonatype.org/service/local/staging/deploy/maven2")
-                credentials {
-                    username = project.properties["ossrhUsername"] as String
-                    password = project.properties["ossrhPassword"] as String
+            if (project.properties["ossrhUsername"] != null) {
+                maven {
+                    name = "OSSRH"
+                    setUrl("https://oss.sonatype.org/service/local/staging/deploy/maven2")
+                    credentials {
+                        username = project.properties["ossrhUsername"] as String
+                        password = project.properties["ossrhPassword"] as String
+                    }
                 }
             }
+            mavenLocal()
         }
     }
 }
