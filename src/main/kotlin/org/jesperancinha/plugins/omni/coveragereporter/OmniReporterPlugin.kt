@@ -13,6 +13,7 @@ import org.jesperancinha.plugins.omni.reporter.processors.CodecovProcessor
 import org.jesperancinha.plugins.omni.reporter.processors.CoverallsReportsProcessor
 import org.slf4j.LoggerFactory
 import java.io.File
+import java.util.*
 
 class GradleOmniBuild(
     override val testOutputDirectory: String,
@@ -25,7 +26,7 @@ private class GradleOmniProject(
 ) : OmniProject
 
 private fun Array<Language>.toSourceDirectories(absolutePath: String) =
-    map { File(absolutePath, "src/main/${it.name.toLowerCase()}").absolutePath }
+    map { File(absolutePath, "src/main/${it.name.lowercase(Locale.getDefault())}").absolutePath }
 
 private val List<Project>.toOmniProjects: List<OmniProject?>
     get() = map {
@@ -212,7 +213,7 @@ class OmniReporterPlugin : Plugin<Project> {
         if ((isCodacyAPIConfigured || effectiveCodacyToken != null) && !disableCodacy) {
             val codacyApiTokenConfig = effectiveCodacyApiToken?.let {
                 CodacyApiTokenConfig(
-                    codacyApiToken = effectiveCodacyApiToken ?: throw IncompleteCodacyApiTokenConfigurationException(),
+                    codacyApiToken = effectiveCodacyApiToken,
                     codacyOrganizationProvider = effectiveCodacyOrganizationProvider
                         ?: throw IncompleteCodacyApiTokenConfigurationException(),
                     codacyUsername = effectiveCodacyUserName ?: throw IncompleteCodacyApiTokenConfigurationException(),
