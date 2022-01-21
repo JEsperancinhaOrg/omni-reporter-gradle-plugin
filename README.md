@@ -27,8 +27,36 @@ gradle clean build test
 
 The rest manually in [Nexus Sonatype](https://oss.sonatype.org/).
 
+## Buy me a coffee
+
+I hope you enjoyed this repository. If you did, you can optionally please buy me a coffee, which supports me to constantly improve and make new free content regularly for everyone. Thank you so much!
+
+[![Buy me a coffee](https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=&slug=jesperancinha&button_colour=046c46&font_colour=ffffff&font_family=Cookie&outline_colour=ffffff&coffee_colour=FFDD00 "title")](https://www.buymeacoffee.com/jesperancinha)
+
+## Coverage report Graphs
+
+<div align="center">
+<img width="30%" src="https://codecov.io/gh/JEsperancinhaOrg/omni-reporter-gradle-plugin/branch/main/graphs/sunburst.svg"/>
+<img width="30%" src="https://codecov.io/gh/JEsperancinhaOrg/omni-reporter-gradle-plugin/branch/main/graphs/tree.svg"/>
+</div>
+<div align="center">
+<img width="60%" src="https://codecov.io/gh/JEsperancinhaOrg/omni-reporter-gradle-plugin/branch/main/graphs/icicle.svg"/>
+</div>
+
 ## References
 
+- [Codacy Coverage Reporter](https://github.com/codacy/codacy-coverage-reporter)
+- [Jackson Module](https://medium.com/@foxjstephen/how-to-actually-parse-xml-in-java-kotlin-221a9309e6e8)
+- [XCode Environment Variable Reference](https://developer.apple.com/documentation/xcode/environment-variable-reference)
+- [Cross-CI reference](https://github.com/streamich/cross-ci)
+- [Coveralls API reference](https://docs.coveralls.io/api-reference)
+- [Git Hub Environment Variables](https://docs.github.com/en/actions/learn-github-actions/environment-variables)
+- [Git Lab Environment Variables](https://docs.gitlab.com/ee/ci/variables/predefined_variables.html)
+- [Check Run Reporter](https://github.com/marketplace/check-run-reporter)
+- [Codacy Maven Plugin](https://github.com/halkeye/codacy-maven-plugin)
+- [Coveralls Maven Plugin](https://github.com/trautonen/coveralls-maven-plugin)
+- [Example Java Maven for CodeCov](https://github.com/codecov/example-java-maven)
+- [CodeCov Maven Plugin](https://github.com/alexengrig/codecov-maven-plugin)
 - [Working with PGP Signatures](https://central.sonatype.org/publish/requirements/gpg/)
 - [How to publish artifact to Maven Central via Gradle](https://www.albertgao.xyz/2018/01/18/how-to-publish-artifact-to-maven-central-via-gradle/)
 - [Deploying to OSSRH with Gradle - Introduction](https://central.sonatype.org/publish/publish-gradle/)
