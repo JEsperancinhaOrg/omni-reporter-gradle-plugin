@@ -6,7 +6,7 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/JEsperancinhaOrg/omni-reporter-gradle-plugin/badge.svg?branch=main)](https://coveralls.io/github/JEsperancinhaOrg/omni-reporter-gradle-plugin?branch=main)
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/63c95f11610e4524baa24b7fb4a153aa)](https://www.codacy.com/gh/JEsperancinhaOrg/omni-reporter-gradle-plugin/dashboard?utm_source=github.com&utm_medium=referral&utm_content=JEsperancinhaOrg/omni-reporter-gradle-plugin&utm_campaign=Badge_Coverage)
-[![codecov](https://codecov.io/gh/JEsperancinhaOrg/omni-reporter-gradle-plugin/branch/master/graph/badge.svg?token=SbzGa8Rxg7)](https://codecov.io/gh/JEsperancinhaOrg/omni-reporter-gradle-plugin)
+[![codecov](https://codecov.io/gh/JEsperancinhaOrg/omni-reporter-gradle-plugin/branch/main/graph/badge.svg?token=SbzGa8Rxg7)](https://codecov.io/gh/JEsperancinhaOrg/omni-reporter-gradle-plugin)
 
 ## References
 
