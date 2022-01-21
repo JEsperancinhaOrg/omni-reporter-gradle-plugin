@@ -2,7 +2,7 @@ plugins {
     kotlin("jvm") version "1.6.10"
     `java-gradle-plugin`
     `maven-publish`
-    id("org.jesperancinha.plugins.omni") version "0.0.0"
+//    id("org.jesperancinha.plugins.omni") version "0.0.0"
     jacoco
     signing
 }
@@ -50,38 +50,23 @@ tasks.jacocoTestReport {
     }
 }
 
-val sourcesJar by tasks.registering(Jar::class) {
-    archiveClassifier.set("sources")
-    from(sourceSets.main.get().allSource)
-}
-
-val javadocJar by tasks.registering(Jar::class) {
-    archiveClassifier.set("javadoc")
-    from(tasks.javadoc)
-}
-
-tasks.withType<Sign>().configureEach {
-    onlyIf {
-        gradle.taskGraph.hasTask(":publishToSonatype")
-    }
-}
-
-signing {
-    val signingKey = providers
-        .environmentVariable("GPG_SIGNING_KEY")
-        .forUseAtConfigurationTime()
-    val signingPassphrase = providers
-        .environmentVariable("GPG_SIGNING_PASSPHRASE")
-        .forUseAtConfigurationTime()
-    if (signingKey.isPresent && signingPassphrase.isPresent) {
-        useInMemoryPgpKeys(signingKey.get(), signingPassphrase.get())
-        val extension = extensions
-            .getByName("publishing") as PublishingExtension
-        sign(extension.publications)
-    }
+java {
+    withJavadocJar()
+    withSourcesJar()
 }
 
 publishing {
+    repositories {
+        maven {
+            val releaseRepo = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+            setUrl(releaseRepo)
+            credentials {
+                username = project.properties["ossrhUsername"] as String
+                password = project.properties["ossrhPassword"] as String
+            }
+        }
+    }
+
     publications {
         create<MavenPublication>("maven") {
             groupId = "org.jesperancinha.plugins.omni"
@@ -90,10 +75,11 @@ publishing {
 
             from(components["java"])
         }
-        create<MavenPublication>("mavenJava") {
-            artifact(sourcesJar.get())
-            artifact(javadocJar.get())
+        create<MavenPublication>("mavenPublish") {
             pom {
+                groupId = "org.jesperancinha.plugins.omni"
+                artifactId = "org.jesperancinha.plugins.omni.gradle.plugin"
+                version = "0.0.0"
                 name.set("Omni Coverage Reporter Gradle Plugin")
                 description.set("A plugin to report coverage to differet API's")
                 url.set("https://joaofilipesabinoesperancinha.nl/")
@@ -122,6 +108,7 @@ publishing {
                     tag.set("0.0.0")
                 }
             }
+            from(components["java"])
         }
     }
 }
