@@ -221,7 +221,7 @@ class OmniReporterPlugin : Plugin<Project> {
                 )
             }
             CodacyProcessor(
-                token = codacyToken,
+                token = effectiveCodacyToken,
                 apiToken = codacyApiTokenConfig,
                 codacyUrl = codacyUrl,
                 currentPipeline = currentPipeline,
