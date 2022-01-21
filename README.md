@@ -12,7 +12,7 @@
 
 ```shell
 gradle clean build test
-gradle publish
+./gradlew publishMavenPublicationToOSSRHRepository
 ```
 
 The rest manually in [Nexus Sonatype](https://oss.sonatype.org/).

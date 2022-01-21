@@ -5,6 +5,7 @@ plugins {
 //    id("org.jesperancinha.plugins.omni") version "0.0.0"
     jacoco
     signing
+    `java-library`
 }
 
 kotlin {
@@ -54,17 +55,6 @@ tasks.jacocoTestReport {
 val JACOCO = "0.8.7"
 val JUPITER = "5.8.2"
 
-dependencies {
-    implementation("org.jesperancinha.plugins:omni-coveragereporter-commons:0.0.0")
-    implementation("ch.qos.logback:logback-classic:1.3.0-alpha12")
-    implementation("org.jacoco:org.jacoco.core:${JACOCO}")
-
-    testImplementation("org.junit.jupiter:junit-jupiter-api:$JUPITER")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:$JUPITER")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:$JUPITER")
-    testImplementation("org.junit.platform:junit-platform-suite:1.8.2")
-}
-
 configure<JavaPluginExtension> {
     withJavadocJar()
     withSourcesJar()
@@ -72,7 +62,7 @@ configure<JavaPluginExtension> {
 
 configure<PublishingExtension> {
     publications {
-       creating(MavenPublication::class) {
+        create<MavenPublication>("maven") {
             from(components["java"])
 
             pom {
@@ -123,9 +113,22 @@ configure<PublishingExtension> {
 }
 
 configure<SigningExtension> {
-    sign(publishing.publications)
+    sign(publishing.publications.findByName("maven"))
 }
+
 
 apply<MavenPublishPlugin>()
 
 apply<SigningPlugin>()
+
+
+dependencies {
+    implementation("org.jesperancinha.plugins:omni-coveragereporter-commons:0.0.0")
+    implementation("ch.qos.logback:logback-classic:1.3.0-alpha12")
+    implementation("org.jacoco:org.jacoco.core:${JACOCO}")
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:$JUPITER")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:$JUPITER")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:$JUPITER")
+    testImplementation("org.junit.platform:junit-platform-suite:1.8.2")
+}
