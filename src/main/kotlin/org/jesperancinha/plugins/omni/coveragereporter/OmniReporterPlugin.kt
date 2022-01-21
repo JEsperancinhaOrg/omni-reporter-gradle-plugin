@@ -31,7 +31,7 @@ private fun Array<Language>.toSourceDirectories(absolutePath: String) =
 private val List<Project>.toOmniProjects: List<OmniProject?>
     get() = map {
         GradleOmniProject(
-            Language.values().toSourceDirectories(it.rootDir.absolutePath),
+            Language.values().toSourceDirectories(it.projectDir.absolutePath),
             GradleOmniBuild(File(it.buildDir, "test-classes").absolutePath, it.buildDir.absolutePath)
         )
     }
