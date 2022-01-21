@@ -9,7 +9,7 @@ name: omni-reporter-gradle-plugin
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build:
