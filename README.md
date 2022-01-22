@@ -45,22 +45,22 @@ I hope you enjoyed this repository. If you did, you can optionally please buy me
 
 ## References
 
-- [Codacy Coverage Reporter](https://github.com/codacy/codacy-coverage-reporter)
-- [Jackson Module](https://medium.com/@foxjstephen/how-to-actually-parse-xml-in-java-kotlin-221a9309e6e8)
-- [XCode Environment Variable Reference](https://developer.apple.com/documentation/xcode/environment-variable-reference)
-- [Cross-CI reference](https://github.com/streamich/cross-ci)
-- [Coveralls API reference](https://docs.coveralls.io/api-reference)
-- [Git Hub Environment Variables](https://docs.github.com/en/actions/learn-github-actions/environment-variables)
-- [Git Lab Environment Variables](https://docs.gitlab.com/ee/ci/variables/predefined_variables.html)
-- [Check Run Reporter](https://github.com/marketplace/check-run-reporter)
-- [Codacy Maven Plugin](https://github.com/halkeye/codacy-maven-plugin)
-- [Coveralls Maven Plugin](https://github.com/trautonen/coveralls-maven-plugin)
-- [Example Java Maven for CodeCov](https://github.com/codecov/example-java-maven)
-- [CodeCov Maven Plugin](https://github.com/alexengrig/codecov-maven-plugin)
-- [Working with PGP Signatures](https://central.sonatype.org/publish/requirements/gpg/)
-- [How to publish artifact to Maven Central via Gradle](https://www.albertgao.xyz/2018/01/18/how-to-publish-artifact-to-maven-central-via-gradle/)
-- [Deploying to OSSRH with Gradle - Introduction](https://central.sonatype.org/publish/publish-gradle/)
-- [Writing a simple plugin](https://docs.gradle.org/current/userguide/custom_plugins.html)
+-   [Codacy Coverage Reporter](https://github.com/codacy/codacy-coverage-reporter)
+-   [Jackson Module](https://medium.com/@foxjstephen/how-to-actually-parse-xml-in-java-kotlin-221a9309e6e8)
+-   [XCode Environment Variable Reference](https://developer.apple.com/documentation/xcode/environment-variable-reference)
+-   [Cross-CI reference](https://github.com/streamich/cross-ci)
+-   [Coveralls API reference](https://docs.coveralls.io/api-reference)
+-   [Git Hub Environment Variables](https://docs.github.com/en/actions/learn-github-actions/environment-variables)
+-   [Git Lab Environment Variables](https://docs.gitlab.com/ee/ci/variables/predefined_variables.html)
+-   [Check Run Reporter](https://github.com/marketplace/check-run-reporter)
+-   [Codacy Maven Plugin](https://github.com/halkeye/codacy-maven-plugin)
+-   [Coveralls Maven Plugin](https://github.com/trautonen/coveralls-maven-plugin)
+-   [Example Java Maven for CodeCov](https://github.com/codecov/example-java-maven)
+-   [CodeCov Maven Plugin](https://github.com/alexengrig/codecov-maven-plugin)
+-   [Working with PGP Signatures](https://central.sonatype.org/publish/requirements/gpg/)
+-   [How to publish artifact to Maven Central via Gradle](https://www.albertgao.xyz/2018/01/18/how-to-publish-artifact-to-maven-central-via-gradle/)
+-   [Deploying to OSSRH with Gradle - Introduction](https://central.sonatype.org/publish/publish-gradle/)
+-   [Writing a simple plugin](https://docs.gradle.org/current/userguide/custom_plugins.html)
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 
