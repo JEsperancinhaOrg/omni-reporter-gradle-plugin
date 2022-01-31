@@ -9,6 +9,7 @@ import org.jesperancinha.plugins.omni.reporter.ProjectDirectoryNotFoundException
 import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyApiTokenConfig
 import org.jesperancinha.plugins.omni.reporter.parsers.Language
 import org.jesperancinha.plugins.omni.reporter.pipelines.PipelineImpl
+import org.jesperancinha.plugins.omni.reporter.pipelines.PipelineImpl.Companion.currentPipeline
 import org.jesperancinha.plugins.omni.reporter.processors.CodacyProcessor
 import org.jesperancinha.plugins.omni.reporter.processors.CodecovProcessor
 import org.jesperancinha.plugins.omni.reporter.processors.CoverallsReportsProcessor
@@ -68,6 +69,7 @@ open class OmniReporterPluginExtension {
     var ignoreTestBuildDirectory: Boolean = true
     var useCoverallsCount: Boolean = true
     var branchCoverage: Boolean = false
+    var fetchBranchNameFromEnv: Boolean = false
     var coverallsToken: String? = null
     var codecovToken: String? = null
     var codacyToken: String? = null
@@ -106,6 +108,7 @@ class OmniReporterPlugin : Plugin<Project> {
                     extension.ignoreTestBuildDirectory,
                     extension.useCoverallsCount,
                     extension.branchCoverage,
+                    extension.fetchBranchNameFromEnv,
                     extension.coverallsToken,
                     extension.codecovToken,
                     extension.codacyToken,
@@ -139,6 +142,7 @@ class OmniReporterPlugin : Plugin<Project> {
         ignoreTestBuildDirectory: Boolean,
         useCoverallsCount: Boolean,
         branchCoverage: Boolean,
+        fetchBranchNameFromEnv: Boolean,
         coverallsToken: String?,
         codecovToken: String?,
         codacyToken: String?,
@@ -187,6 +191,7 @@ class OmniReporterPlugin : Plugin<Project> {
         logger.info("failOnXmlParsingError: $failOnXmlParsingError")
         logger.info("disableCoveralls: $disableCoveralls")
         logger.info("disableCodacy: $disableCodacy")
+        logger.info("fetchBranchNameFromEnv: $fetchBranchNameFromEnv")
         logger.info("ignoreTestBuildDirectory: $ignoreTestBuildDirectory")
         logger.info("branchCoverage: $branchCoverage")
         logger.info("useCoverallsCount: $useCoverallsCount")
@@ -194,7 +199,7 @@ class OmniReporterPlugin : Plugin<Project> {
         logger.info("extraReportFolders: ${extraReportFolders.joinToString(";")}")
         logLine()
 
-        val currentPipeline = PipelineImpl.currentPipeline
+        val currentPipeline = currentPipeline(fetchBranchNameFromEnv = fetchBranchNameFromEnv)
 
         val extraProjects = extraReportFolders.map {
             GradleOmniProject(

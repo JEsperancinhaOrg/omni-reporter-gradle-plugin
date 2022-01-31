@@ -1,15 +1,15 @@
 package org.jesperancinha.plugins.omni.coveragereporter
 
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Test
 
 internal class GradleOmniBuildTest {
 
-    @org.junit.jupiter.api.Test
+    @Test
     fun getTestOutputDirectory() {
-        GradleOmniBuild("O","O")
+        GradleOmniBuild("O", "O")
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     fun getDirectory() {
     }
 }
