@@ -5,7 +5,8 @@ import org.gradle.api.Project
 import org.jesperancinha.plugins.omni.reporter.IncompleteCodacyApiTokenConfigurationException
 import org.jesperancinha.plugins.omni.reporter.OmniBuild
 import org.jesperancinha.plugins.omni.reporter.OmniProject
-import org.jesperancinha.plugins.omni.reporter.domain.CodacyApiTokenConfig
+import org.jesperancinha.plugins.omni.reporter.ProjectDirectoryNotFoundException
+import org.jesperancinha.plugins.omni.reporter.domain.api.CodacyApiTokenConfig
 import org.jesperancinha.plugins.omni.reporter.parsers.Language
 import org.jesperancinha.plugins.omni.reporter.pipelines.PipelineImpl
 import org.jesperancinha.plugins.omni.reporter.processors.CodacyProcessor
@@ -75,6 +76,7 @@ open class OmniReporterPluginExtension {
     var codacyUserName: String? = null
     var codacyProjectName: String? = null
     val extraSourceFolders: List<File> = emptyList()
+    val extraReportFolders: List<File> = emptyList()
 }
 
 /**
@@ -112,6 +114,7 @@ class OmniReporterPlugin : Plugin<Project> {
                     extension.codacyUserName,
                     extension.codacyProjectName,
                     extension.extraSourceFolders,
+                    extension.extraReportFolders,
                     extension.isCodacyAPIConfigured,
                     project
                 )
@@ -144,6 +147,7 @@ class OmniReporterPlugin : Plugin<Project> {
         codacyUserName: String?,
         codacyProjectName: String?,
         extraSourceFolders: List<File>,
+        extraReportFolders: List<File>,
         isCodacyAPIConfigured: Boolean,
         project: Project
     ) {
@@ -187,9 +191,18 @@ class OmniReporterPlugin : Plugin<Project> {
         logger.info("branchCoverage: $branchCoverage")
         logger.info("useCoverallsCount: $useCoverallsCount")
         logger.info("extraSourceFolders: ${extraSourceFolders.joinToString(";")}")
+        logger.info("extraReportFolders: ${extraReportFolders.joinToString(";")}")
         logLine()
 
         val currentPipeline = PipelineImpl.currentPipeline
+
+        val extraProjects = extraReportFolders.map {
+            GradleOmniProject(
+                extraSourceFolders.map { src -> src.absolutePath },
+                GradleOmniBuild(it.absolutePath, it.absolutePath)
+            )
+        }
+        val allOmniProjects = allProjects.toOmniProjects + extraProjects
 
         effectiveCoverallsToken?.let { token ->
             if (!disableCoveralls) {
@@ -197,7 +210,7 @@ class OmniReporterPlugin : Plugin<Project> {
                     coverallsToken = token,
                     coverallsUrl = coverallsUrl,
                     currentPipeline = currentPipeline,
-                    allProjects = allProjects.toOmniProjects,
+                    allProjects = allOmniProjects,
                     projectBaseDir = projectBaseDir,
                     failOnUnknown = failOnUnknown,
                     failOnReportNotFound = failOnReportNotFound,
@@ -226,7 +239,7 @@ class OmniReporterPlugin : Plugin<Project> {
                 apiToken = codacyApiTokenConfig,
                 codacyUrl = codacyUrl,
                 currentPipeline = currentPipeline,
-                allProjects = allProjects.toOmniProjects,
+                allProjects = allOmniProjects,
                 projectBaseDir = projectBaseDir,
                 failOnReportNotFound = failOnReportNotFound,
                 failOnReportSending = failOnReportSendingError,
@@ -243,8 +256,8 @@ class OmniReporterPlugin : Plugin<Project> {
                     token = token,
                     codecovUrl = codecovUrl,
                     currentPipeline = currentPipeline,
-                    allProjects = allProjects.toOmniProjects,
-                    projectBaseDir = projectBaseDir,
+                    allProjects = allOmniProjects,
+                    projectBaseDir = projectBaseDir ?: throw ProjectDirectoryNotFoundException(),
                     failOnReportNotFound = failOnReportNotFound,
                     failOnReportSending = failOnReportSendingError,
                     failOnUnknown = failOnUnknown,
