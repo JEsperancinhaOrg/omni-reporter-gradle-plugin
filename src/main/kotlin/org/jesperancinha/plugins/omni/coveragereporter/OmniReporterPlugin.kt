@@ -76,9 +76,9 @@ open class OmniReporterPluginExtension {
     var codacyOrganizationProvider: String? = null
     var codacyUserName: String? = null
     var codacyProjectName: String? = null
-    val extraSourceFolders: List<File> = emptyList()
-    val extraReportFolders: List<File> = emptyList()
-    val reportRejectList: List<String> = emptyList()
+    var extraSourceFolders: List<File> = emptyList()
+    var extraReportFolders: List<File> = emptyList()
+    var reportRejectList: List<String> = emptyList()
 }
 
 /**

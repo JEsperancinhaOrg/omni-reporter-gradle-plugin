@@ -125,7 +125,6 @@ apply<MavenPublishPlugin>()
 
 apply<SigningPlugin>()
 
-
 dependencies {
     implementation("org.jesperancinha.plugins:omni-coveragereporter-commons:0.1.3")
     implementation("org.jacoco:org.jacoco.core:${JACOCO}")
