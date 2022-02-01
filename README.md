@@ -32,7 +32,7 @@ This plugin is a spin-off from the development of it's maven counterpart: [![Gen
 
 Please check the Docs for further information on how to configure the plugin. The configurations are very much alike. The main difference is that where in `Maven` you work with XML format, with gradle you work with `JSON` like these examples:
 
-#### 1. Gradle Groovy
+#### 1.  Gradle Groovy
 
 ```groovy
 omniConfig {
@@ -41,7 +41,7 @@ omniConfig {
 }
 ```
 
-#### 2. Gradle Kotlin
+#### 2.  Gradle Kotlin
 
 ```kotlin
 configure<OmniReporterPluginExtension> {
@@ -52,9 +52,9 @@ configure<OmniReporterPluginExtension> {
 
 ## Example projects
 
-1. [![Generic badge](https://img.shields.io/static/v1.svg?label=BitBucket&message=International%20Airports✈️&color=informational)](https://bitbucket.org/jesperancinha/international-airports-service-root)
-2. [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=itf-chartizate-android🧿&color=informational)](https://github.com/JEsperancinhaOrg/itf-chartizate-android)
-3. [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=String%20Array%20Paradigms&color=informational)](https://github.com/jesperancinha/string-array-paradigms)
+1.  [![Generic badge](https://img.shields.io/static/v1.svg?label=BitBucket&message=International%20Airports✈️&color=informational)](https://bitbucket.org/jesperancinha/international-airports-service-root)
+2.  [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=itf-chartizate-android🧿&color=informational)](https://github.com/JEsperancinhaOrg/itf-chartizate-android)
+3.  [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=String%20Array%20Paradigms&color=informational)](https://github.com/jesperancinha/string-array-paradigms)
 
 ## Release notes
 
