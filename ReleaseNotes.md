@@ -5,11 +5,11 @@
 1. Support for Group Coverage with Branch Coverage (mostly Coveralls)
 2. Source encoding gets automatically chosen unless we configure flag `failOnNoEncoding` to `true`
 
-#### Release 0.1.1 - Upcoming
+#### Release 0.1.1 - 2022/02/1
 
 1. Url Fix for BitBucket
 
-#### Release 0.1.0 - Upcoming
+#### Release 0.1.0 - 2022/02/1
 
 ###### Features
 
