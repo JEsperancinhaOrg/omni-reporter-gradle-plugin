@@ -1,6 +1,11 @@
 # Omni Reporter Commons Release Notes
 
-#### Release 0.0.3 - Upcoming
+#### Release 0.1.1 - Upcoming
+
+1. Support for Group Coverage with Branch Coverage (mostly Coveralls)
+2. Source encoding gets automatically chosen unless we configure flag `failOnNoEncoding` to `true`
+
+#### Release 0.1.0 - Upcoming
 
 ###### Features
 
@@ -8,12 +13,19 @@
 2. Support for [LCov](https://wiki.documentfoundation.org/Development/Lcov)
 3. Support for [Jacoco.exec](https://www.jacoco.org/jacoco/) files
 4. Support for [OpenClover](https://openclover.org/index)
-5. Support for Group Coverage with Branch Coverage (mostly Coveralls)
-6. Source encoding gets automatically chosen unless we configure flag `failOnNoEncoding` to `true`
+5. Create flag `fetchBranchNameFromEnv` to fetch the branch name from environment variables
+6. ~~Reports in the same folder are merged and average, (We assume thart if there are different reports in the same folder, it only means that there are different brands in there.)~~ Unfortunately, by doing so, the results may become inconsistent for reports that do not report coverage for certain
+   files. Please make sure not to have different report brands (i.e. Clover and LCov together) for the same files. In that case, line coverage will be reported duplicate.
+7. Exclude report option `reportRejectList`. Given the above, it may be difficult to manage that situation. We can then use this option to exclude a report that for some reason we don't want to consider for the overall coverage calculation). See example in [![Generic badge](https://img.shields.io/static/v1.svg?label=GitLab&message=Bridge%20Management%20Logistics&color=informational)](https://gitlab.com/jesperancinha/bridge-logistics).
+8. Change file detection to include content. The check should be based on text labels and parsing should be avoided.
+9. ~~Remove files from the excluded list where applicable (code wise). Files in de excluded list are also used in a filename based algorithm. This needs to be changed.~~ - I leave it there because `coverage-final.json` is not a part of any other report default naming strategy. This way I keep this protection.
+10. Add support for Circle CI and BitBucket builds
 
 ###### Bugs
 
 1. Root Path fix for internal elements
+2. Fix Reporting sending of test report files by default with `ignoreTestBuildDirectory`
+3. Fix Codacy not including TSX in TypeScript reports
 
 #### Release 0.0.2 - 2022/01/22
 
