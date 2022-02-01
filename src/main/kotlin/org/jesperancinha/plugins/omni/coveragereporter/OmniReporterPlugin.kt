@@ -78,6 +78,7 @@ open class OmniReporterPluginExtension {
     var codacyProjectName: String? = null
     val extraSourceFolders: List<File> = emptyList()
     val extraReportFolders: List<File> = emptyList()
+    val reportRejectList: List<String> = emptyList()
 }
 
 /**
@@ -117,6 +118,7 @@ class OmniReporterPlugin : Plugin<Project> {
                     extension.codacyProjectName,
                     extension.extraSourceFolders,
                     extension.extraReportFolders,
+                    extension.reportRejectList,
                     extension.isCodacyAPIConfigured,
                     project
                 )
@@ -151,6 +153,7 @@ class OmniReporterPlugin : Plugin<Project> {
         codacyProjectName: String?,
         extraSourceFolders: List<File>,
         extraReportFolders: List<File>,
+        reportRejectList: List<String>,
         isCodacyAPIConfigured: Boolean,
         project: Project
     ) {
@@ -196,6 +199,7 @@ class OmniReporterPlugin : Plugin<Project> {
         logger.info("useCoverallsCount: $useCoverallsCount")
         logger.info("extraSourceFolders: ${extraSourceFolders.joinToString(";")}")
         logger.info("extraReportFolders: ${extraReportFolders.joinToString(";")}")
+        logger.info("reportRejectList: ${reportRejectList.joinToString(";")}")
         logLine()
 
         val currentPipeline = currentPipeline(fetchBranchNameFromEnv = fetchBranchNameFromEnv)
@@ -222,7 +226,8 @@ class OmniReporterPlugin : Plugin<Project> {
                     failOnXmlParseError = failOnXmlParsingError,
                     branchCoverage = branchCoverage,
                     ignoreTestBuildDirectory = ignoreTestBuildDirectory,
-                    useCoverallsCount = useCoverallsCount
+                    useCoverallsCount = useCoverallsCount,
+                    reportRejectList = reportRejectList
                 ).processReports()
             }
         }
@@ -250,6 +255,7 @@ class OmniReporterPlugin : Plugin<Project> {
                 failOnXmlParseError = failOnXmlParsingError,
                 failOnUnknown = failOnUnknown,
                 ignoreTestBuildDirectory = ignoreTestBuildDirectory,
+                reportRejectList = reportRejectList
             ).processReports()
         }
 
@@ -266,6 +272,7 @@ class OmniReporterPlugin : Plugin<Project> {
                     failOnReportSending = failOnReportSendingError,
                     failOnUnknown = failOnUnknown,
                     ignoreTestBuildDirectory = ignoreTestBuildDirectory,
+                    reportRejectList = reportRejectList
                 ).processReports()
         }
     }
