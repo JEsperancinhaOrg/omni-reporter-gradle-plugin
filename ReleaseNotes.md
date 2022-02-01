@@ -1,9 +1,13 @@
 # Omni Reporter Commons Release Notes
 
-#### Release 0.1.1 - Upcoming
+#### Release 0.1.2 - Upcoming
 
 1. Support for Group Coverage with Branch Coverage (mostly Coveralls)
 2. Source encoding gets automatically chosen unless we configure flag `failOnNoEncoding` to `true`
+
+#### Release 0.1.1 - Upcoming
+
+1. Url Fix for BitBucket
 
 #### Release 0.1.0 - Upcoming
 
