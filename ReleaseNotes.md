@@ -31,6 +31,12 @@
 2. Fix Reporting sending of test report files by default with `ignoreTestBuildDirectory`
 3. Fix Codacy not including TSX in TypeScript reports
 
+---
+
+Support Upgrade Leap
+
+--- 
+
 #### Release 0.0.2 - 2022/01/22
 
 Secure Google Http Client
