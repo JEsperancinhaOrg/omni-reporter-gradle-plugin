@@ -65,7 +65,7 @@ Please find all the release notes on this separate document [ReleaseNotes.md](./
 
 ##### Gradle Minimal Support version 7.3.3.
 
-This plugin is being tested for versions >= Gradle 7.3.3. For older versions, I cannot guarantee compatibility. During the migration of one of my projects (i.e. [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Performance%20Objects%20&color=informational)](https://github.com/jesperancinha/performance-projects)), I noticed that I was getting a Kotlin related error. The first thought was to just add of the Kotlin SDK's. However, I also noticed that my Gradle Wrapper was version 5.2.1. Just by doing an update, it started working as expected. This is not to say that anything in between won't work. I'm just not promising any compatibility with older versions than the stated one.
+This plugin is being tested for versions >= Gradle 7.3.3. For older versions, I cannot guarantee compatibility. During the migration of one of my projects (i.e. [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Performance%20Objects%20&color=informational)](https://github.com/jesperancinha/performance-projects)), I noticed that I was getting a Kotlin related error. The first thought was just to add one of the Kotlin SDK's as a dependency. However, after thorough search, I also noticed that my Gradle Wrapper was version 5.2.1. Just by doing an update, it started working as expected. This is not to say that anything in between won't work. I'm just not promising any compatibility with older versions than the stated one.
 
 ## Making a release
 
