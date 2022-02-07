@@ -198,19 +198,13 @@ class OmniReporterPlugin : Plugin<Project> {
         logger.info("reportRejectList: ${reportRejectList.joinToString(";")}")
         logLine()
 
-        val extraProjects = extraReportFolders.map {
-            OmniProjectGeneric(
-                extraSourceFolders.map { src -> src.absolutePath }.toMutableList(),
-                OmniBuildGeneric(it.absolutePath, it.absolutePath)
-            )
-        }
+        val extraProjects = extraReportFolders.toExtraProjects(extraSourceFolders)
         val allOmniProjects = allProjects.toOmniProjects + extraProjects
 
         CoverallsReportsProcessor(
             coverallsToken = effectiveCoverallsToken,
             disableCoveralls = disableCoveralls,
             coverallsUrl = coverallsUrl,
-            allProjects = allOmniProjects,
             projectBaseDir = projectBaseDir,
             failOnUnknown = failOnUnknown,
             failOnReportNotFound = failOnReportNotFound,
@@ -220,6 +214,9 @@ class OmniReporterPlugin : Plugin<Project> {
             branchCoverage = branchCoverage,
             ignoreTestBuildDirectory = ignoreTestBuildDirectory,
             useCoverallsCount = useCoverallsCount,
+            allProjects = allOmniProjects,
+            extraSourceFolders = extraSourceFolders,
+            extraReportFolders = extraReportFolders,
             reportRejectList = reportRejectList
         ).processReports()
 
@@ -231,7 +228,6 @@ class OmniReporterPlugin : Plugin<Project> {
             codacyProjectName = effectiveCodacyProjectName,
             disableCodacy = disableCodacy,
             codacyUrl = codacyUrl,
-            allProjects = allOmniProjects,
             projectBaseDir = projectBaseDir,
             failOnReportNotFound = failOnReportNotFound,
             failOnReportSending = failOnReportSendingError,
@@ -239,6 +235,9 @@ class OmniReporterPlugin : Plugin<Project> {
             fetchBranchNameFromEnv = fetchBranchNameFromEnv,
             failOnUnknown = failOnUnknown,
             ignoreTestBuildDirectory = ignoreTestBuildDirectory,
+            allProjects = allOmniProjects,
+            extraSourceFolders = extraSourceFolders,
+            extraReportFolders = extraReportFolders,
             reportRejectList = reportRejectList
         ).processReports()
 
@@ -247,14 +246,16 @@ class OmniReporterPlugin : Plugin<Project> {
             codecovToken = effectiveCodecovToken,
             disableCodecov = disableCodecov,
             codecovUrl = codecovUrl,
-            allProjects = allOmniProjects,
             projectBaseDir = projectBaseDir ?: throw ProjectDirectoryNotFoundException(),
             failOnReportNotFound = failOnReportNotFound,
             failOnReportSending = failOnReportSendingError,
             failOnUnknown = failOnUnknown,
             fetchBranchNameFromEnv = fetchBranchNameFromEnv,
             ignoreTestBuildDirectory = ignoreTestBuildDirectory,
-            reportRejectList = reportRejectList,
+            allProjects = allOmniProjects,
+            extraSourceFolders = extraSourceFolders,
+            extraReportFolders = extraReportFolders,
+            reportRejectList = reportRejectList
         ).processReports()
     }
 
