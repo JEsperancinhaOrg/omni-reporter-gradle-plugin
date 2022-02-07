@@ -215,8 +215,6 @@ class OmniReporterPlugin : Plugin<Project> {
             ignoreTestBuildDirectory = ignoreTestBuildDirectory,
             useCoverallsCount = useCoverallsCount,
             allProjects = allOmniProjects,
-            extraSourceFolders = extraSourceFolders,
-            extraReportFolders = extraReportFolders,
             reportRejectList = reportRejectList
         ).processReports()
 
@@ -236,11 +234,8 @@ class OmniReporterPlugin : Plugin<Project> {
             failOnUnknown = failOnUnknown,
             ignoreTestBuildDirectory = ignoreTestBuildDirectory,
             allProjects = allOmniProjects,
-            extraSourceFolders = extraSourceFolders,
-            extraReportFolders = extraReportFolders,
             reportRejectList = reportRejectList
         ).processReports()
-
 
         CodecovProcessor(
             codecovToken = effectiveCodecovToken,
@@ -253,8 +248,6 @@ class OmniReporterPlugin : Plugin<Project> {
             fetchBranchNameFromEnv = fetchBranchNameFromEnv,
             ignoreTestBuildDirectory = ignoreTestBuildDirectory,
             allProjects = allOmniProjects,
-            extraSourceFolders = extraSourceFolders,
-            extraReportFolders = extraReportFolders,
             reportRejectList = reportRejectList
         ).processReports()
     }
