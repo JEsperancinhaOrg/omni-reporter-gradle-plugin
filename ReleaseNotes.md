@@ -1,9 +1,16 @@
 # Omni Reporter Commons Release Notes
 
-#### Release 0.1.3 - Upcoming
+#### Release 0.1.4 - Upcoming
 
 1. Support for Group Coverage with Branch Coverage (mostly Coveralls)
 2. Source encoding gets automatically chosen unless we configure flag `failOnNoEncoding` to `true`
+
+#### Release 0.1.3 - Upcoming
+
+1. GoLang Coverage Support (`.out` files)
+2. Interoperability
+- Important Static methods made available to `Clojure` and `Java`
+- Reduction of the need to create instances on the fly.
 
 #### Release 0.1.2 - 2022/02/02
 
