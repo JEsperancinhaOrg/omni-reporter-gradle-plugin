@@ -82,6 +82,18 @@ gradle clean build test
 
 The rest manually in [Nexus Sonatype](https://oss.sonatype.org/).
 
+This file is mandatory before a release:
+
+`gradle.properties`:
+
+```properties
+ossrhUsername=<ossrhUsername>
+ossrhPassword=<ossrhPassword>
+signing.keyId=<signing.keyId>
+signing.password=<signing.password>
+signing.secretKeyRingFile=/Users/<user>/.gnupg/secring.gpg
+```
+
 ## Coverage report Graphs
 
 <div align="center">
