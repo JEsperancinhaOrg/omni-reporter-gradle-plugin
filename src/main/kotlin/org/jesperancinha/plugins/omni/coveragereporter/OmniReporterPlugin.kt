@@ -260,7 +260,7 @@ class OmniReporterPlugin : Plugin<Project> {
     private fun checkToken(token: String?) = token?.let { "found" } ?: "not found"
 
     companion object {
-        private val logger = LoggerFactory.getLogger(OmniReporterPlugin::class.java)
+        private val logger = LoggerConfig.getLogger(OmniReporterPlugin::class.java)
 
         const val OMNI_CHARACTER_LINE_NUMBER = 150
     }
