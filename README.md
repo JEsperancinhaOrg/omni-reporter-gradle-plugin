@@ -11,6 +11,7 @@
 [![GitHub License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
 
 [![Snyk Score](https://snyk-widget.herokuapp.com/badge/mvn/org.jesperancinha.plugins.omni/org.jesperancinha.plugins.omni.gradle.plugin/badge.svg)](https://github.com/JEsperancinhaOrg/omni-reporter-gradle-plugin)
+[![Known Vulnerabilities](https://snyk.io/test/github/JEsperancinhaOrg/omni-reporter-gradle-plugin/badge.svg)](https://snyk.io/test/github/JEsperancinhaOrg/omni-reporter-gradle-plugin)
 
 [![omni-reporter-gradle-plugin](https://github.com/JEsperancinhaOrg/omni-reporter-gradle-plugin/actions/workflows/omni-reporter-gradle-plugin.yml/badge.svg)](https://github.com/JEsperancinhaOrg/omni-reporter-gradle-plugin/actions/workflows/omni-reporter-gradle-plugin.yml)
 
