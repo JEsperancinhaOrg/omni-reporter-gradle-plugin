@@ -10,6 +10,9 @@
 
 [![GitHub License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
 
+[![Snyk Score](https://snyk-widget.herokuapp.com/badge/mvn/org.jesperancinha.plugins.omni/org.jesperancinha.plugins.omni.gradle.plugin/badge.svg)](https://github.com/JEsperancinhaOrg/omni-reporter-gradle-plugin)
+[![Known Vulnerabilities](https://snyk.io/test/github/JEsperancinhaOrg/omni-reporter-gradle-plugin/badge.svg)](https://github.com/JEsperancinhaOrg/omni-reporter-gradle-plugin)
+
 [![omni-reporter-gradle-plugin](https://github.com/JEsperancinhaOrg/omni-reporter-gradle-plugin/actions/workflows/omni-reporter-gradle-plugin.yml/badge.svg)](https://github.com/JEsperancinhaOrg/omni-reporter-gradle-plugin/actions/workflows/omni-reporter-gradle-plugin.yml)
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/63c95f11610e4524baa24b7fb4a153aa)](https://www.codacy.com/gh/JEsperancinhaOrg/omni-reporter-gradle-plugin/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=JEsperancinhaOrg/omni-reporter-gradle-plugin&amp;utm_campaign=Badge_Grade)

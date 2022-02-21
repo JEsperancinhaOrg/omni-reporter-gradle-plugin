@@ -86,7 +86,7 @@ configure<PublishingExtension> {
                         id.set("jesperancinha")
                         name.set("João Esperancinha")
                         email.set("jofisaes@gmail.com")
-                        organization.set("jessperancinha.org")
+                        organization.set("jesperancinha.org")
                         organizationUrl.set("https://joaofilipesabinoesperancinha.nl/")
                     }
                 }
