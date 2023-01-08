@@ -98,6 +98,14 @@ signing.password=<signing.password>
 signing.secretKeyRingFile=/Users/<user>/.gnupg/secring.gpg
 ```
 
+To get the keyId:
+
+```shell
+gpg --full-generate-key
+gpg -K
+gpg --keyring secring.gpg --export-secret-keys > ~/.gnupg/secring.gpg
+```
+
 ## Coverage report Graphs
 
 <div align="center">
