@@ -98,7 +98,7 @@ signing.password=<signing.password>
 signing.secretKeyRingFile=/Users/<user>/.gnupg/secring.gpg
 ```
 
-To get the keyId:
+Generate the signing fiels(if not already available. check with `gpg -K` first!)
 
 ```shell
 gpg --full-generate-key
@@ -106,6 +106,11 @@ gpg -K
 gpg --keyring secring.gpg --export-secret-keys > ~/.gnupg/secring.gpg
 gpg --keyserver keyserver.ubuntu.com --send-keys <KEY>
 ```
+
+- `gpg --full-generate-key` - Key generation
+- `gpg -K` - Lists keys. The `KeyId` is the last 8 Digits of the GPG key
+- `gpg --keyring secring.gpg --export-secret-keys > ~/.gnupg/secring.gpg` - Exports the keys to `secring.gpg`
+- `gpg --keyserver keyserver.ubuntu.com --send-keys <KEY>` - Exports the key so that Sonatype can verify the release
 
 ## Coverage report Graphs
 
