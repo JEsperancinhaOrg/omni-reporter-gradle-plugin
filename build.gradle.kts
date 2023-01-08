@@ -2,7 +2,7 @@ plugins {
     kotlin("jvm") version "1.8.0"
     `java-gradle-plugin`
     `maven-publish`
-//    id("org.jesperancinha.plugins.omni") version "0.3.0"
+//    id("org.jesperancinha.plugins.omni") version "0.3.1"
     jacoco
     signing
     `java-library`
@@ -35,7 +35,7 @@ gradlePlugin {
 }
 
 group = "org.jesperancinha.plugins.omni"
-version = "0.3.0"
+version = "0.3.1"
 
 val test by tasks.getting(Test::class) {
     useJUnitPlatform { }
@@ -68,7 +68,7 @@ configure<PublishingExtension> {
             pom {
                 groupId = "org.jesperancinha.plugins.omni"
                 artifactId = "org.jesperancinha.plugins.omni.gradle.plugin"
-                version = "0.3.0"
+                version = "0.3.1"
                 name.set("Omni Coverage Reporter Gradle Plugin")
                 description.set("A plugin to report coverage to differet API's")
                 url.set("https://joaofilipesabinoesperancinha.nl/")
@@ -95,7 +95,7 @@ configure<PublishingExtension> {
                     connection.set("scm:git:git://github.com/JEsperancinhaOrg.git")
                     developerConnection.set("scm:git:git://github.com/JEsperancinhaOrg.git")
                     url.set("https://github.com/JEsperancinhaOrg/omni-reporter-commons")
-                    tag.set("0.3.0")
+                    tag.set("0.3.1")
                 }
             }
         }
