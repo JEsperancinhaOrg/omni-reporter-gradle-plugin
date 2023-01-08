@@ -98,7 +98,7 @@ signing.password=<signing.password>
 signing.secretKeyRingFile=/Users/<user>/.gnupg/secring.gpg
 ```
 
-Generate the signing fiels(if not already available. check with `gpg -K` first!)
+Generate the signing fiels(if not already available. check with `gpg -K` first!):
 
 ```shell
 gpg --full-generate-key
