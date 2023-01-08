@@ -104,6 +104,7 @@ To get the keyId:
 gpg --full-generate-key
 gpg -K
 gpg --keyring secring.gpg --export-secret-keys > ~/.gnupg/secring.gpg
+gpg --keyserver keyserver.ubuntu.com --send-keys <KEY>
 ```
 
 ## Coverage report Graphs
