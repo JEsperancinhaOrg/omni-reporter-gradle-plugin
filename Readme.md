@@ -98,7 +98,7 @@ signing.password=<signing.password>
 signing.secretKeyRingFile=/Users/<user>/.gnupg/secring.gpg
 ```
 
-Generate the signing fiels(if not already available. check with `gpg -K` first!):
+Generate the signing fields(if not already available. check with `gpg -K` first!):
 
 ```shell
 gpg --full-generate-key
@@ -145,8 +145,8 @@ gpg --keyserver keyserver.ubuntu.com --send-keys <KEY>
 
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/JEOrgLogo-20.png "João Esperancinha Homepage")](http://joaofilipesabinoesperancinha.nl)
 [![GitHub followers](https://img.shields.io/github/followers/jesperancinha.svg?label=Jesperancinha&style=social "GitHub")](https://github.com/jesperancinha)
-[![Twitter Follow](https://img.shields.io/twitter/follow/joaofse?label=João%20Esperancinha&style=social "Twitter")](https://twitter.com/joaofse)
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/mastodon-20.png "Mastodon")](https://masto.ai/@jesperancinha)
+[![Twitter Follow](https://img.shields.io/twitter/follow/joaofse?label=João%20Esperancinha&style=social "Twitter")](https://twitter.com/joaofse)
 | [Sessionize](https://sessionize.com/joao-esperancinha/)
 | [Spotify](https://open.spotify.com/user/jlnozkcomrxgsaip7yvffpqqm?si=b54b89eae8894960)
 | [Medium](https://medium.com/@jofisaes)
