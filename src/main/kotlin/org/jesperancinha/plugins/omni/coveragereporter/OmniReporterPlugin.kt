@@ -75,6 +75,7 @@ open class OmniReporterPluginExtension {
     var codacyUserName: String? = null
     var codacyProjectName: String? = null
     var parallelization: Int = 4
+    var httpRequestParallelization: Int = 1
     var extraSourceFolders: List<File> = emptyList()
     var extraReportFolders: List<File> = emptyList()
     var reportRejectList: List<String> = emptyList()
@@ -114,6 +115,7 @@ class OmniReporterPlugin : Plugin<Project> {
                     extension.codacyUserName,
                     extension.codacyProjectName,
                     extension.parallelization,
+                    extension.httpRequestParallelization,
                     extension.extraSourceFolders,
                     extension.extraReportFolders,
                     extension.reportRejectList,
@@ -149,6 +151,7 @@ class OmniReporterPlugin : Plugin<Project> {
         codacyUsername: String?,
         codacyProjectName: String?,
         parallelization: Int,
+        httpRequestParallelization: Int,
         extraSourceFolders: List<File>,
         extraReportFolders: List<File>,
         reportRejectList: List<String>,
@@ -184,6 +187,7 @@ class OmniReporterPlugin : Plugin<Project> {
             codacyUsername,
             codacyProjectName,
             parallelization,
+            httpRequestParallelization,
             extraSourceFolders,
             extraReportFolders,
             reportRejectList

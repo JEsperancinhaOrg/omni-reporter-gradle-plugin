@@ -6,9 +6,10 @@ buildw:
 	sed 's+//++g' build.gradle.kts  > plugin.build.gradle.kts
 	./gradlew -c plugin.settings.gradle.kts build -i
 upgrade:
-	gradle wrapper --gradle-version 7.3.3
+	gradle wrapper --gradle-version 7.6
 upgrade-mac-os:
 	brew upgrade gradle
-stage:
+test:
 	gradle clean build test
+stage: test
 	./gradlew publishMavenPublicationToOSSRHRepository
