@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.9.24"
+    kotlin("jvm") version "2.0.0"
     `java-gradle-plugin`
     `maven-publish`
 //    id("org.jesperancinha.plugins.omni") version "0.3.1"
