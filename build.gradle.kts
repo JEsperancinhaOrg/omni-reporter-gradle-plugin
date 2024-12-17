@@ -53,7 +53,7 @@ tasks.jacocoTestReport {
 }
 
 val JACOCO = "0.8.12"
-val JUPITER = "5.11.3"
+val JUPITER = "5.11.4"
 
 configure<JavaPluginExtension> {
     withJavadocJar()
