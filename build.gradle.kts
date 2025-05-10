@@ -6,6 +6,7 @@ plugins {
     jacoco
     signing
     `java-library`
+    id("io.codearte.nexus-staging") version "0.30.0"
 }
 
 kotlin {
@@ -35,7 +36,7 @@ gradlePlugin {
 }
 
 group = "org.jesperancinha.plugins.omni"
-version = "0.3.1"
+version = "0.4.5"
 
 val test by tasks.getting(Test::class) {
     useJUnitPlatform { }
@@ -68,7 +69,7 @@ configure<PublishingExtension> {
             pom {
                 groupId = "org.jesperancinha.plugins.omni"
                 artifactId = "org.jesperancinha.plugins.omni.gradle.plugin"
-                version = "0.3.1"
+                version = "0.4.5"
                 name.set("Omni Coverage Reporter Gradle Plugin")
                 description.set("A plugin to report coverage to differet API's")
                 url.set("https://joaofilipesabinoesperancinha.nl/")
@@ -95,7 +96,7 @@ configure<PublishingExtension> {
                     connection.set("scm:git:git://github.com/JEsperancinhaOrg.git")
                     developerConnection.set("scm:git:git://github.com/JEsperancinhaOrg.git")
                     url.set("https://github.com/JEsperancinhaOrg/omni-reporter-commons")
-                    tag.set("0.3.1")
+                    tag.set("0.4.5")
                 }
             }
         }
@@ -126,7 +127,7 @@ apply<MavenPublishPlugin>()
 apply<SigningPlugin>()
 
 dependencies {
-    implementation("org.jesperancinha.plugins:omni-coveragereporter-commons:0.4.4")
+    implementation("org.jesperancinha.plugins:omni-coveragereporter-commons:0.4.5")
     implementation("org.jacoco:org.jacoco.core:${JACOCO}")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:$JUPITER")

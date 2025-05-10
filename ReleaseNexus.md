@@ -1,4 +1,43 @@
-# Markdowner Release Document
+# Omni Reporter Commons Release Document
+
+## Token generation
+
+There is no need to configure the GPG Keys anymore. Simply create a new token on https://oss.sonatype.org/#profile;User%20Token.
+
+Make sure maven looks like bellow
+
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<settings xsi:schemaLocation='http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd'
+          xmlns='http://maven.apache.org/SETTINGS/1.0.0' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+    <servers>
+        <server>
+            <id>ossrh</id>
+            <username>{{username}}</username>
+            <password>{{password}}</password>
+        </server>
+    </servers>
+</settings>
+```
+
+```shell
+mvn clean deploy -Prelease
+```
+
+For gradle.properties:
+
+```properties
+ossrhUsername=your-username
+ossrhPassword=your-token
+```
+
+```shell
+gradle clean build test
+./gradlew publishMavenPublicationToOSSRHRepository
+```
+---
+
+> DEPRECATED INFO
 
 ## Delivery to Sonatype Repository
 
@@ -69,6 +108,7 @@ mvn nexus-staging:release -Prelease
             </activation>
             <properties>
                 <gpg.executable>gpg</gpg.executable>
+                <gpg.keyname>${{keyname}}</gpg.keyname>
                 <gpg.passphrase>{{password}}</gpg.passphrase>
             </properties>
         </profile>

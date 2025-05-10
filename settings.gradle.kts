@@ -5,3 +5,4 @@ pluginManagement {
         mavenCentral()
     }
 }
+rootProject.name = "omni-reporter-gradle-plugin"
