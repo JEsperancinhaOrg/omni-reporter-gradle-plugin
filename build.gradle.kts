@@ -133,5 +133,5 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:$JUPITER")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:$JUPITER")
     testImplementation("org.junit.jupiter:junit-jupiter-params:$JUPITER")
-    testImplementation("org.junit.platform:junit-platform-suite:1.13.4")
+    testImplementation("org.junit.platform:junit-platform-suite:6.0.0")
 }
